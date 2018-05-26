@@ -1,0 +1,160 @@
+
+/**
+ * Write a description of class SwappingElements here.
+ *
+ * @author (Anwar)
+ * @version (26/05/2018)
+ */
+import java.util.*;
+import java.util.Collections;
+public class SwappingElements
+{
+   public static void main(String[] args)
+   {
+    
+       ArrayList<String> array = new ArrayList<String>();
+    
+       array.add("four");
+       array.add("score");
+       array.add("and");
+       array.add("seven");
+       array.add("years");
+       array.add("ago");
+       
+       ArrayList<String> Pairs = new ArrayList<String>();
+       
+       
+       System.out.println("Here is the list before swapping");
+       for(int i = 0; i < array.size(); i++)
+        {
+        
+            System.out.println(array.get(i));
+        }
+        
+       for(int i = 0; i < array.size()-1; i++)
+       {
+        
+            for(int j = 1; j <= i+1; j++)
+            {
+               // Pairs.add(array.get(j+1));
+                //Pairs.add(array.get(j));
+                //String temp = array.get(j);
+                //array.set(j, array.get(i));
+                //array.set(i, temp);
+                Collections.swap(array, i, j);
+            }
+        }
+        System.out.println("Here is the list after swapping");
+        for(int i = 0; i < array.size(); i++)
+        {
+        
+            System.out.println(array.get(i));
+        }
+        
+        MarkLength();
+        RemoveBadPairs();
+    }
+   public static void MarkLength()
+    {
+   
+       ArrayList<String> array1 = new ArrayList<String>(9);
+    
+       array1.add("this");
+       array1.add("is");
+       array1.add("lots");
+       array1.add("of");
+       array1.add("fun");
+       array1.add("for");
+       array1.add("every");
+       array1.add("Java");
+       array1.add("programmer");
+        
+       ArrayList<String> array2 = new ArrayList<String>(9);
+       for(int i = 0; i < array1.size(); i++)
+       {
+        
+           String item = array1.get(i);
+           
+           
+           if(item.length() == 4)
+           {
+            
+               array2.add("****");
+               array2.add(item);
+            }
+            else
+            {
+                array2.add(item);
+            }
+
+        }
+        System.out.println(" ");
+        System.out.println("NEW ARRAY LIST WITH ASTERISK ");
+        for(int i = 0; i < array2.size(); i++)
+        {
+            String values = array2.get(i);
+            
+            System.out.println(values);
+        
+        
+        }
+    
+    }
+   public static void RemoveBadPairs()
+   {
+    
+        ArrayList<Integer> array3 = new ArrayList<Integer>();
+        
+        array3.add(3);
+        array3.add(7);
+        array3.add(9);
+        array3.add(2);
+        array3.add(5);
+        array3.add(5);
+        array3.add(8);
+        array3.add(5);
+        array3.add(6);
+        array3.add(3);
+        array3.add(4);
+        array3.add(7);
+        array3.add(3);
+        array3.add(1);
+    int[] remove = new int[9];
+    
+   try
+   {
+        for(int i = 0; i < array3.size()-1; i++)
+        {
+        
+            for(int j = 0; j < array3.size()-i; j++)
+            {
+                if(((j)%2 == 0) && ((j+1)%2 != 0))
+                {
+                        int value = array3.get(j);
+                    if(value > array3.get(j+1))
+                    {
+                        array3.remove(j);
+                        array3.remove(j);
+                            //prevents j from becoming negative
+                        j = Math.max(0, (j-1));
+                    }
+                }
+                else if((array3.size() %2) !=0)
+                {
+                    array3.remove(array3.size()-1);
+                }
+            }
+        
+        }
+    }
+    catch(NullPointerException e)
+    {
+        System.out.println("sorry the array list is null");
+    }
+    
+        for(int i = 0; i < array3.size(); i++)
+        {
+            System.out.println(array3.get(i));
+        }
+    }
+}
